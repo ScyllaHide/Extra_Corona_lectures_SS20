@@ -1,0 +1,33 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{pgfplots}
+    \pgfplotsset{
+        compat=1.12,
+    }
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-2,
+            xmax=4,
+            ymin=-7,
+            ymax=7,
+            xlabel={$x$},
+            ylabel={$y$},
+            scale only axis,
+            axis lines=middle,
+            % set the minimum value to the minimum x value
+            % which in this case is $-\sqrt[3]{7}$
+            domain=-1.912931:3,      % <-- works for pdfLaTeX and LuaLaTeX
+%            domain=-1.91293118:3,   % <-- would also work for LuaLaTeX
+            samples=200,
+            smooth,
+            % to avoid that the "plot node" is clipped (partially)
+            clip=false,
+            % use same unit vectors on the axis
+            axis equal image=true,
+        ]
+            \addplot [red] {sqrt(x^3+7)}
+                node[right] {$y^2=x^3+7$};
+            \addplot [red] {-sqrt(x^3+7)};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

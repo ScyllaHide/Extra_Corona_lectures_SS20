@@ -1,0 +1,40 @@
+\documentclass{standalone}
+
+
+
+
+
+\usepackage{tikz, amsmath}
+
+	\usepackage{tikz-qtree}
+
+	\usetikzlibrary{cd}
+
+	\usetikzlibrary{arrows}
+
+	\usetikzlibrary{automata}
+
+	\usetikzlibrary{babel}
+
+	\usetikzlibrary{calc}
+
+	\usetikzlibrary{fit}
+
+	\usetikzlibrary{matrix}
+
+	\usetikzlibrary{positioning}
+
+	\usetikzlibrary{shapes.geometric}
+
+	\usetikzlibrary{arrows.meta,bending}
+
+
+
+\begin{document}
+
+    \begin{tikzcd}[ampersand replacement=\&]
+	q                                             \& t \arrow[l, "{(t,q)}"'] \\
+	p \arrow[u, "{(p,q)}"] \arrow[ru, "{(p,t)}"'] \&                        
+	\end{tikzcd}
+
+\end{document}

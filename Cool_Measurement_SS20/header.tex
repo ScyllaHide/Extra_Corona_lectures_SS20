@@ -1,0 +1,365 @@
+%packages
+\usepackage[ngerman]{babel}
+\usepackage{amsfonts, amssymb, amsmath, amsthm}
+\usepackage{aligned-overset}
+\usepackage{mleftright}                   % for \DeclarePairedDelimiter
+% with \overset{\text{Definition}}&{=} instead of &\stackrel{\text{Definition}}=
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{bbm}                          % mathbb 1
+\usepackage{mathrsfs}                     % Category-like letters for MINT with \mathscr
+
+% tikz stuff
+\usepackage{tikz, amsmath}
+
+\usepackage{tikz-qtree}
+
+\usetikzlibrary{cd}
+
+\usetikzlibrary{arrows}
+
+\usetikzlibrary{automata}
+
+\usetikzlibrary{babel}
+
+\usetikzlibrary{calc}
+
+\usetikzlibrary{fit}
+
+\usetikzlibrary{matrix}
+
+\usetikzlibrary{positioning}
+
+\usetikzlibrary{shapes.geometric}
+
+\usetikzlibrary{arrows.meta,bending}
+
+% environments
+
+%\newtheorem {theorem} {Theorem} [section]
+
+% das "`[theorem] "` bewirkt, dass es eine durchgehende
+% Nummerierung dieser environments gibt und nicht jede
+% Art seine eigene Nummerierung hat
+
+% Für Lemmas dieses environment:
+%\newtheorem {lemma} [theorem] {Lemma}
+% Für Folgerungen/ Korollare dieses environment 
+%\newtheorem {corollary}  {Korollar}
+
+% Definitionen sehen dann anders aus, siehe 
+% http://tex.stackexchange.com/questions/38260/non-italic-text-in-theorems-definitions-examples
+%\theoremstyle {definition}
+% Für Definitionen dieses environment
+%\newtheorem {definition}  {Definition}
+
+% Für Bemerkungen dieses environment
+%\theoremstyle {remark}
+%\newtheorem* {note} {Bemerkung}
+
+% Beispiele kriegen eine andere Formatierung %ohne Nummerierung falls mit *:
+%\newtheorem{example}  {Beispiel}
+%\newtheorem{exercise}{Übung}
+
+% ohne Nummerierung
+\newtheorem* {theorem} {Theorem}
+
+% das "`[theorem] "` bewirkt, dass es eine durchgehende
+% Nummerierung dieser environments gibt und nicht jede
+% Art seine eigene Nummerierung hat
+
+% Für Lemmas dieses environment:
+\newtheorem* {lemma} {Lemma}
+% Für Folgerungen/ Korollare dieses environment 
+\newtheorem* {corollary} {Korollar}
+
+% Definitionen sehen dann anders aus, siehe 
+% http://tex.stackexchange.com/questions/38260/non-italic-text-in-theorems-definitions-examples
+\theoremstyle {definition}
+% Für Definitionen dieses environment
+\newtheorem* {definition} {Definition}
+
+% Für Bemerkungen dieses environment
+\theoremstyle {remark}
+\newtheorem* {note} {Bemerkung}
+
+% Beispiele kriegen eine andere Formatierung %ohne Nummerierung falls mit *:
+\newtheorem*{example} {Beispiel}
+\newtheorem*{exercise} {Übung}
+
+%transpose
+\newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
+%new macro for "equals" ^=
+\newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+%fraction with backslash
+\newcommand\bsfrac[2]{%
+	\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
+}
+
+%%%%%%%% General newcommands %%%%%%%%%%%
+
+% Sets
+%%%%%%%%%%% Old ones, to be compatible with old latex scripts %%%%%%%%%%%
+
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\quat}{\mathbb{H}} % quaternion
+\newcommand{\field}{\mathbb{F}} % general field for the others above!
+
+%%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%%%%%%%%%%% new shorter ones %%%%%%%%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}} 								% natural number Symbol
+\newcommand{\Z}{\mathbb{Z}} 								% whole number Symbol
+\newcommand{\Q}{\mathbb{Q}} 								% rational number symbol
+\newcommand{\R}{\mathbb{R}} 								% real set R
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rd}{\mathbb{R}^d} 								% real set R^n for MINT
+\newcommand{\Rnn}{\mathbb{R}^{n \times n}} 					% real set R^nxn
+\undef{\H}
+\undef{\C}
+\newcommand{\C}{\mathbb{C}} 								% complex set C
+\newcommand{\Cn}{\mathbb{C}^n}
+\newcommand{\Cnn}{\mathbb{C}^{n \times n}} 					% complex set C^nxn
+\newcommand{\ii}{\mathrm{i}\mkern1mu}    					% imaginary unit
+\newcommand{\H}{\mathbb{H}} 								% quaternion
+\newcommand{\F}{\mathbb{F}} 								% general field for the others above!
+\newcommand{\Fp}{\F_p} 									% general field for the others above!
+
+\newcommand{\powerset}{\mathcal{P}} 						% Powerset
+\newcommand{\pows}{\mathcal{P}} 							
+% shoter one
+%%%%%%%%%%% p-adics %%%%%%%%%%%
+
+\newcommand{\pZ}{\mathbb{Z}_p}
+\newcommand{\pQ}{\mathbb{Q}_p}
+\newcommand{\pC}{\mathbb{C}_p}
+
+% % % % % % % Shorter commands % % % % % % % % % % % % % % % %
+\newcommand{\mal}{\cdot}                   
+%\newcommand{\implies}{\Longrightarrow}        
+\undef{\over}											% overrides the old Tex command \over, which are basics fractions!
+\newcommand{\over}[2]{\overset{#1}{#2}} 				% shorter \overset!
+\newcommand{\astar}[1]{#1^{\ast}}	                    % gesternte Sachen!
+\newcommand{\aastar}[1]{#1^{\ast\ast}}                  % doppelt gesternte Sachen!
+\newcommand{\ul}[1]{\underline{#1}} 					% simple underline		    
+
+%%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
+
+\newcommand{\diff}{\,\mathrm{d}} 							% differential d
+\renewcommand{\d}{\,\mathrm{d}} 							% shorter command for  differential d
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\qraum}[2]{\sfrac{#1}{#2}}
+
+%%% Metrics, Norms, etc %%%%
+
+% Norms, Absolute, Scalar product
+% Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
+% Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+% binar form of this command made by https://github.com/lostindarkmath, see https://github.com/henrydatei/TUD_MATH_BA/issues/66
+\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
+{
+	\NewDocumentCommand#1{som}{
+		\IfNoValueTF{##2}
+		{\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
+		{\mathopen{##2#2}##3\mathclose{##2#3}}
+	}
+}
+
+\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binar
+{
+	\NewDocumentCommand#1{somm}{
+		\IfNoValueTF{##2}
+		{\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
+		{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
+	}
+}
+
+\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
+\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
+\xDeclarePairedDelimiter{\brackets}{(}{)}
+\xDeclarePairedDelimiter{\sqbrackets}{[}{]}
+
+%%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\sigmalg}{$\sigma$-Algebra}
+% declares the BourbakiвЂ™s вЂdangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
+\DeclareFontFamily{U}{stixbbit}{}
+\DeclareFontShape{U}{stixbbit}{m}{it}{<-> stix-mathbbit}{}
+\DeclareRobustCommand{\stixdanger}{%
+  {\usefont{U}{stixbbit}{m}{it}\symbol{"F6}}%
+}
+
+%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%
+
+\newcommand{\sigA}{\mathscr{A}}         % typical Sigma A for sigma algebras
+\newcommand{\sigB}{\mathscr{B}}         % typical Sigma B for sigma algebras
+\newcommand{\sigG}{\mathscr{G}}         % typical Generator for sigma algebras
+\newcommand{\sigO}{\mathscr{O}}         % sigma algebra of open sets
+\newcommand{\probp}{\mathbb{P}}         % probability measure
+\newcommand{\borel}{\mathscr{B}}        % Borel set
+\newcommand{\sigF}{\mathscr{F}}         % typical sigma F for sigma algebra for stochastic lecture
+\newcommand{\indi}{\mathbbm{1}}         % Indicator function
+
+%%%%%%%%%%% Stochastic %%%%%%%%%%%%%%%%%%
+
+% distributions
+\DeclareMathOperator{\Bin}{Bin}         % Binomial-distribution
+\DeclareMathOperator{\Ber}{Bernoulli}   % Bernoulli-distibution
+\DeclareMathOperator{\Multi}{Multi}     % Multinomial-distribution
+\DeclareMathOperator{\Hyper}{Hyper}     % hypergeometric-distribution
+\DeclareMathOperator{\Pois}{Poisson}    % Poisson-distribution
+\DeclareMathOperator{\Gleich}{U}        % Gleich-distribution
+\DeclareMathOperator{\negBin}{negBin}   % negative Bin-distribution
+\DeclareMathOperator{\Geom}{Geom}        % geometrische-distribution
+\DeclareMathOperator{\Gam}{Gamma}
+\DeclareMathOperator{\EXP}{Exp}
+\newcommand{\Ln}[1]{\mathscr{L}^{#1}} % L spaces
+
+% Other stuff for stochastic
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math Operators %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% A
+\DeclareMathOperator{\Aff}{Aff} 				% Affine
+\DeclareMathOperator{\Aut}{Aut} 				% Automorphism
+\DeclareMathOperator{\Abb}{Abb} 				% Abbildung
+
+%%%%%% B
+\DeclareMathOperator{\Bil}{Bil}					% Bilinear form
+
+%%%%%% C
+\DeclareMathOperator{\cl}{cl} 					% Closure
+\DeclareMathOperator{\cond}{cond} 				% ? 
+\DeclareMathOperator{\curl}{curl} 				% Curl/Rotation
+\DeclareMathOperator{\chara}{char} 				% characteric Ring/Field
+
+%%%%%% D
+\DeclareMathOperator{\diam}{diam} 				% Diameter of a set
+\undef\div
+\DeclareMathOperator{\div}{div} 				% Divergence
+\DeclareMathOperator{\diag}{diag} 				% Diagonal matrix
+\DeclareMathOperator{\D}{d} 					% ?
+\DeclareMathOperator{\Discr}{discr}
+
+%%%%%% E
+\DeclareMathOperator{\Eig}{Eig} 				% Eigenspace
+\DeclareMathOperator{\End}{End} 				% Endomorphism
+\DeclareMathOperator{\ext}{ext} 				% Exterior
+\DeclareMathOperator{\Ext}{ext} 				% 2nd time?
+
+%%%%%% F
+\DeclareMathOperator{\Fix}{Fix} 				% Fix-points for group theory
+
+%%%%%% G
+\DeclareMathOperator{\ggT}{ggT}					% GrГ¶Гџte geimeinsamer Teiler (gcd)
+\DeclareMathOperator{\GL}{GL} 					% General Linear Group
+\DeclareMathOperator{\graph}{graph} 			% Graph
+\DeclareMathOperator{\grad}{grad} 				% Gradient
+\DeclareMathOperator{\Gal}{Gal}
+
+%%%%%% H
+\DeclareMathOperator{\Hom}{Hom} 				% family of Homomorphisms
+\DeclareMathOperator{\Hau}{Hau} 				% Hauptraum (generalized Eigenspace)
+
+%%%%%% IJK
+\DeclareMathOperator{\Image}{Im} 				% Image
+\DeclareMathOperator{\Inn}{Inn} 				% Inner autommorphism
+\DeclareMathOperator{\Int}{int} 				% 2nd time
+\DeclareMathOperator{\id}{id} 					% Identity
+
+\DeclareMathOperator{\kgV}{kgV} 				% kleinste gemeinsamer Teiler (lcd)
+\DeclareMathOperator{\Ker}{Ker} 				% kernel of a morphisms
+
+%%%%%% LMN
+\DeclareMathOperator{\LC}{LC} 					% Leitkoeffizient polynome
+
+\DeclareMathOperator{\Mat}{Mat} 				% Matrix
+\DeclareMathOperator{\MinPol}{MinPol} 			% Minimal Polynomial
+
+
+%%%%%% OPQ
+\DeclareMathOperator{\ord}{ord} 				% Order of a group
+\DeclareMathOperator{\Orth}{O} 					% Orthogonal Group
+\DeclareMathOperator{\Out}{Out} 				% Outer Automorphism
+\DeclareMathOperator{\Landau}{\mathcal{O}} 				% Big ``O'' (Landau)
+
+\DeclareMathOperator{\pr}{pr} 					% Projection
+
+\DeclareMathOperator{\Quot}{Quot} 				% Quotient
+
+%%%%%% R
+\DeclareMathOperator{\rd}{rd} 					% ?
+\DeclareMathOperator{\rk}{rk} 					% Rank of a matrix
+\DeclareMathOperator{\rot}{rot} 				% Rotation (Curl)
+\DeclareMathOperator{\rang}{rang} 				% Matrix Rank
+\DeclareMathOperator{\res}{res}
+
+%%%%%% S
+\DeclareMathOperator{\sgn}{sgn} 				% Signum function
+\DeclareMathOperator{\SL}{SL} 					% Special Linear Group
+\DeclareMathOperator{\SO}{SO} 					% Special Orthogonal Group
+\DeclareMathOperator{\Span}{span} 				% Span
+\DeclareMathOperator{\SR}{SR} 					% Spaltenraum
+\DeclareMathOperator{\Stab}{Stab} 				% Stabilizer
+\DeclareMathOperator{\supp}{supp} 				% Support
+\DeclareMathOperator{\Syl}{Syl} 				% Sylow Group
+\DeclareMathOperator{\Sym}{Sym} 				% Symmetric Group
+\DeclareMathOperator{\SU}{SU} 					% Special Unitary Group
+
+%%%%%% T
+\DeclareMathOperator{\tr}{tr} 					% Trace operator
+\DeclareMathOperator{\Typ}{Typ} 				% Type
+\DeclareMathOperator{\trdeg}{tr.deg}
+
+%%%%%% UVW
+\DeclareMathOperator{\UG}{UG} 					% Untergruppe (subgroup) 
+\DeclareMathOperator{\Uni}{U} 					% Unitary Group
+\DeclareMathOperator{\ugr}{Ugr}					%Set of Subgroups (ALGZTH)
+\DeclareMathOperator{\w}{w} 					% ?
+
+%%%%%% XYZ
+\DeclareMathOperator{\ZR}{ZR} 					% Zeilenraum
+\DeclareMathOperator{\zwk}{Zwk}					%ZwischenkГ¶rper / ALGZTH
+%\DeclareMathOperator{\Z}{Z} 					% ?
+
+
+% WHITESPACE COMMANDS
+\newcommand{\nl}{\\[\baselineskip]}      		% wordwrap with empty Zeile line after w/o underfull-hbox-warning
+\newcommand{\enter}{$ $\newline}         		% wordwrap w/o condition
+\newcommand\tab[1][1cm]{\hspace*{#1}}    		% practical Tabulator
+
+% german words in align env %
+\renewcommand{\mit}{\text{ mit }}        		% overrides \mit - Used to turn on math italic typestyle.
+\newcommand{\bzw}{\text{ bzw. }}         		% sprachliches bzw. fГјr Numerik
+\newcommand{\falls}{\text{falls }}       		% sprachliches falls fГјr Fallunterscheidungen
+\newcommand{\sonst}{\text{sonst }}       		% sprachliches sonst fГјr Fallunterscheidungen
+\newcommand{\und}{\text{ und }}          		% sprachliches und fГјr align-Umgebungen
+\newcommand{\oder}{\text{ oder }}        		% sprachliches oder fГјr align-Umgebungen
+
+% english words in align env %
+\newcommand{\with}{\text{ with }}				% sprachliches with fГјr align-Umgebungen
+\newcommand{\nd}{\text{ and }}					% sprachliches und fГјr align-Umgebungen
+%\newcommand{\else}{\text{else }}				% sprachliches else fГјr Fallunterscheidungen
+%\newcommand{\or}{\text{ or }}					% sprachliches or fГјr align-Umgebungen
+%\newcommand{\if}{\text{if }} 					% sprachliches if fГјr Fallunterscheidungen
+
+% overset text
+\newcommand{\defeq}{\overset{\text{Def}}{=}}    % Definition over over =
+
+\let\implies\Rightarrow

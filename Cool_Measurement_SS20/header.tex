@@ -5,36 +5,32 @@
 \usepackage{mleftright}                   % for \DeclarePairedDelimiter
 % with \overset{\text{Definition}}&{=} instead of &\stackrel{\text{Definition}}=
 \usepackage{enumerate}
+%\usepackage{minipage}                     % part pages
 \usepackage{enumitem}
 \usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage{bbm}                          % mathbb 1
 \usepackage{mathrsfs}                     % Category-like letters for MINT with \mathscr
+\usepackage{todonotes}                    % put notes on the margins
+%\usepackage{pdfcomment}                   % as alternative, if todonotes conflicts with tikz!
+
+
+\usepackage{fdsymbol}                         % for cloverleaf symbol
+\usepackage[left=1.5cm, right=3.5cm, top=2cm]{geometry}                     % set the paper size  
 
 % tikz stuff
 \usepackage{tikz, amsmath}
-
-\usepackage{tikz-qtree}
-
-\usetikzlibrary{cd}
-
-\usetikzlibrary{arrows}
-
-\usetikzlibrary{automata}
-
-\usetikzlibrary{babel}
-
-\usetikzlibrary{calc}
-
-\usetikzlibrary{fit}
-
-\usetikzlibrary{matrix}
-
-\usetikzlibrary{positioning}
-
-\usetikzlibrary{shapes.geometric}
-
-\usetikzlibrary{arrows.meta,bending}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
 
 % environments
 
@@ -72,6 +68,7 @@
 
 % Für Lemmas dieses environment:
 \newtheorem* {lemma} {Lemma}
+\newtheorem* {satz} {Satz}
 % Für Folgerungen/ Korollare dieses environment 
 \newtheorem* {corollary} {Korollar}
 
@@ -83,7 +80,22 @@
 
 % Für Bemerkungen dieses environment
 \theoremstyle {remark}
-\newtheorem* {note} {Bemerkung}
+\newtheorem* {remark} {Bemerkung}
+
+\theoremstyle {remark}
+\newtheorem* {problem} {Problem}
+
+\theoremstyle {remark}
+\newtheorem* {interpret} {Interpretation}
+
+\theoremstyle {remark}
+\newtheorem* {notation} {Notation}
+
+\theoremstyle {remark}
+\newtheorem* {summary} {Zusammenfassung}
+
+\theoremstyle {remark}
+\newtheorem* {overview} {Überblick}
 
 % Beispiele kriegen eine andere Formatierung %ohne Nummerierung falls mit *:
 \newtheorem*{example} {Beispiel}
@@ -99,6 +111,9 @@
 \newcommand\bsfrac[2]{%
 	\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
 }
+
+%%%% geometry
+
 
 %%%%%%%% General newcommands %%%%%%%%%%%
 
@@ -120,7 +135,12 @@
 %%%%%%%%%%% new shorter ones %%%%%%%%%%%%%%%%%
 
 \newcommand{\N}{\mathbb{N}} 								% natural number Symbol
-\newcommand{\Z}{\mathbb{Z}} 								% whole number Symbol
+\newcommand{\M}{\mathbb{M}}  % Monoid
+\newcommand{\G}{\mathbb{G}}  % action network
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\P}{\mathbb{P}}   % Measure or here freestyle.
+\newcommand{\W}{\mathbb W}   % nice W
+% whole number Symbol
 \newcommand{\Q}{\mathbb{Q}} 								% rational number symbol
 \newcommand{\R}{\mathbb{R}} 								% real set R
 \newcommand{\Rn}{\mathbb{R}^n}
@@ -135,6 +155,7 @@
 \newcommand{\H}{\mathbb{H}} 								% quaternion
 \newcommand{\F}{\mathbb{F}} 								% general field for the others above!
 \newcommand{\Fp}{\F_p} 									% general field for the others above!
+\renewcommand{\O}{\mathscr O}
 
 \newcommand{\powerset}{\mathcal{P}} 						% Powerset
 \newcommand{\pows}{\mathcal{P}} 							
@@ -145,6 +166,9 @@
 \newcommand{\pQ}{\mathbb{Q}_p}
 \newcommand{\pC}{\mathbb{C}_p}
 
+%%%% Highlighting
+\renewcommand{\emph}[1]{\underline{#1}}
+
 % % % % % % % Shorter commands % % % % % % % % % % % % % % % %
 \newcommand{\mal}{\cdot}                   
 %\newcommand{\implies}{\Longrightarrow}        
@@ -152,7 +176,7 @@
 \newcommand{\over}[2]{\overset{#1}{#2}} 				% shorter \overset!
 \newcommand{\astar}[1]{#1^{\ast}}	                    % gesternte Sachen!
 \newcommand{\aastar}[1]{#1^{\ast\ast}}                  % doppelt gesternte Sachen!
-\newcommand{\ul}[1]{\underline{#1}} 					% simple underline		    
+\newcommand{\uline}[1]{\underline{#1}} 					% simple underline		    
 
 %%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
 
@@ -239,6 +263,7 @@
 \DeclareMathOperator{\Aff}{Aff} 				% Affine
 \DeclareMathOperator{\Aut}{Aut} 				% Automorphism
 \DeclareMathOperator{\Abb}{Abb} 				% Abbildung
+\DeclareMathOperator{\add}{add}
 
 %%%%%% B
 \DeclareMathOperator{\Bil}{Bil}					% Bilinear form
@@ -248,6 +273,8 @@
 \DeclareMathOperator{\cond}{cond} 				% ? 
 \DeclareMathOperator{\curl}{curl} 				% Curl/Rotation
 \DeclareMathOperator{\chara}{char} 				% characteric Ring/Field
+\newcommand{\cloverleaf}{\clubsuit}             % cloverleaf symbol for the cloverleaf network
+\newcommand{\compare}{\nearrow}                 % compare literature, other branch, etc
 
 %%%%%% D
 \DeclareMathOperator{\diam}{diam} 				% Diameter of a set
@@ -272,6 +299,7 @@
 \DeclareMathOperator{\graph}{graph} 			% Graph
 \DeclareMathOperator{\grad}{grad} 				% Gradient
 \DeclareMathOperator{\Gal}{Gal}
+\newcommand{\Gen}[1]{\langle #1\rangle}
 
 %%%%%% H
 \DeclareMathOperator{\Hom}{Hom} 				% family of Homomorphisms
@@ -290,14 +318,21 @@
 \DeclareMathOperator{\LC}{LC} 					% Leitkoeffizient polynome
 
 \DeclareMathOperator{\Mat}{Mat} 				% Matrix
+\DeclareMathOperator{\Measure}{\mathscr M} 
 \DeclareMathOperator{\MinPol}{MinPol} 			% Minimal Polynomial
+\DeclareMathOperator{\multi}{multi}             % multiplication label
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\ap}{ap}
 
 
 %%%%%% OPQ
 \DeclareMathOperator{\ord}{ord} 				% Order of a group
 \DeclareMathOperator{\Orth}{O} 					% Orthogonal Group
 \DeclareMathOperator{\Out}{Out} 				% Outer Automorphism
+\DeclareMathOperator{\ordd}{ord}                 % ord
+
 \DeclareMathOperator{\Landau}{\mathcal{O}} 				% Big ``O'' (Landau)
+\DeclareMathOperator{\Path}{Path}
 
 \DeclareMathOperator{\pr}{pr} 					% Projection
 
@@ -309,6 +344,7 @@
 \DeclareMathOperator{\rot}{rot} 				% Rotation (Curl)
 \DeclareMathOperator{\rang}{rang} 				% Matrix Rank
 \DeclareMathOperator{\res}{res}
+\newcommand{\Relat}{\mathbb{P}}
 
 %%%%%% S
 \DeclareMathOperator{\sgn}{sgn} 				% Signum function
@@ -331,8 +367,12 @@
 \DeclareMathOperator{\UG}{UG} 					% Untergruppe (subgroup) 
 \DeclareMathOperator{\Uni}{U} 					% Unitary Group
 \DeclareMathOperator{\ugr}{Ugr}					%Set of Subgroups (ALGZTH)
-\DeclareMathOperator{\w}{w} 					% ?
 
+\DeclareMathOperator{\w}{w}
+\DeclareMathOperator{\WWord}{\W\ordd}
+\DeclareMathOperator{\Word}{Word}
+% |Word
+\DeclareMathOperator{\vect}{vec}
 %%%%%% XYZ
 \DeclareMathOperator{\ZR}{ZR} 					% Zeilenraum
 \DeclareMathOperator{\zwk}{Zwk}					%ZwischenkГ¶rper / ALGZTH
@@ -358,8 +398,20 @@
 %\newcommand{\else}{\text{else }}				% sprachliches else fГјr Fallunterscheidungen
 %\newcommand{\or}{\text{ or }}					% sprachliches or fГјr align-Umgebungen
 %\newcommand{\if}{\text{if }} 					% sprachliches if fГјr Fallunterscheidungen
+\newcommand{\mylinebreak}{\mbox{}}              % proper break lines after paragraphs
 
 % overset text
 \newcommand{\defeq}{\overset{\text{Def}}{=}}    % Definition over over =
 
 \let\implies\Rightarrow
+
+%%%%%% circle with stuff inside
+
+\makeatletter
+\newcommand{\ostar}{\mathbin{\mathpalette\make@circled\star}}
+\newcommand{\make@circled}[2]{%
+  \ooalign{$\m@th#1\smallbigcirc{#1}$\cr\hidewidth$\m@th#1#2$\hidewidth\cr}%
+}
+\newcommand{\smallbigcirc}[1]{%
+  \vcenter{\hbox{\scalebox{0.77778}{$\m@th#1\bigcirc$}}}%
+}

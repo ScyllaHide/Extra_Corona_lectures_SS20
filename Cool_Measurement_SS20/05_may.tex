@@ -1,0 +1,135 @@
+\subsection*{4. \& 5. Mai 2020}
+\begin{example}
+Nun schauen wir uns einige Beispiele von Aktionsnetzwerken an
+    \begin{enumerate}
+        \item (``Der Logistiker''): Ist $P$ Menge, so ist $\G_P := (G_P, \ast, \id)$ mit $G_P = G(P,P\times P) = (P, P\times P, \id_{P\times P})$ und $(p,t)\ast (t,q) := (p,q)$ (``Weglassprodukt'' von $(p,t)$ und $(t,q)$) für alle $p,t,w \in P$ sowie $\id\colon P \to P \times P$ mit $p \mapsto (p,p)$ ist damt ein ANW, das sogenannte \emph{logistische ANW} zu $P$.
+        \item (``Der notorische Geschichtenerzähler'') Sei $(V,E,\rho)$ Netzwerk und sei $\epsilon \colon V \to W$ Bijektion mit $W \cap E^{\Gen{+}} = \empty$, so ist $\Path(G, \epsilon) = (V, E^{\Gen{\ast}}, \rho^{\Gen{\ast}})$ mit $ E^{\Gen{\ast}} = W \cup E^{\Gen{+}}= \bigcup_{n \in \N}E^{\Gen{n}}$\todo[inline]{Here $W$ is the set of 0-paths!} wobei $E^{\Gen{0}} := W$ und $\rho^{\Gen{\ast}} \colon E^{\Gen{\ast}} \to V \times V$ mit $\rho^{\Gen{\ast}}(e_1,\dots, e_n):= (\sigma e_1, \tau e_n)$ für alle $(e_1, \dots, e_n)\in E^{\Gen{+}}$ \todo[inline]{looks like elements of $E^{\Gen{\ast}}$ are ``vector-like'', its a Tensor space?!} sowie $\rho^{\Gen{\ast}}(\epsilon p) := (p,p)$ für alle $p \in V$ ein Netzwerk, das sogenannte \emph{erweiterte Pfadnetzwerk zu $(G,\epsilon)$}. Dannn ist $\Relat(G,\epsilon) := (\Path(G,\epsilon), \otimes, \id)$ mit
+        \begin{align*}
+            (a_1,\dots, a_m)\otimes(c_1,\dots,c_n) := (a_1, \dots, a_m, c_1, \dots, c_n) \quad \forall (a_1, \dots, a_n), (c_1, \dots, c_n) \in E^{\Gen{+}}
+        \end{align*}
+        mit 
+        $$
+            \begin{tikzcd}
+                \bullet \arrow[r, "a_1"] & \bullet \arrow[r, "a_2"] & \bullet \arrow[r, "a_3"] & \dots \arrow[r, "a_m"] & \bullet \arrow[r, "c_1"] & \bullet \arrow[r, "c_2"] & \bullet \arrow[r, "c_3"] & \dots \arrow[r, "c_n"] & \bullet
+            \end{tikzcd}\quad \tau a_m = \sigma c_1
+        $$
+        und
+        \begin{align*}
+            \epsilon(\sigma a_1)\otimes (a_1, \dots, a_m):= (a_1, \dots, a_m) =: (a_1, \dots, a_n) \otimes \epsilon(\tau a_m) \quad \forall (a_1, \dots, a_m) \in E^{\Gen{+}}
+        \end{align*}
+        sowie
+        \begin{align*}
+            \epsilon p \otimes \epsilon p := \epsilon p \quad \forall p \in V
+        \end{align*}
+        und ausserdem $\id\colon V \to E^{\Gen{\ast}} \mit p \mapsto \epsilon p$ eine ANW, das sogenannte \emph{Pfad-ANW zu $(G, \epsilon)$}.
+        \item (``Der Schreibtischtäter''): Sei $\M=(M, \ast, \epsilon)$ (hierbei ist $\epsilon$ die neutrale Element im Sinne des Monoids) \emph{Monoid}, d.h. Menge 
+        \begin{align*}
+            \ast\colon M \times M \to M \mit (a,b) \mapsto a \ast b
+        \end{align*}
+        Abbildung (``2-stellige Operation'' oder auch binary Operation) sowie $\epsilon \in M$ mit
+        \begin{itemize}
+            \item $\forall a,b,c M$, $(a \ast b)\ast c = a \ast (b \ast c)$
+            \item $\forall a \in M$, $\epsilon \ast a = a = a \ast \epsilon$
+        \end{itemize}
+        Sei $\perp$ Symbol (``Bottom''). Dann ist
+        \begin{align*}
+            \G(\M,\perp) := (\cloverleaf(M,\perp), \ast, \id) \mit \id \colon \set{\perp} \to M \mit \perp \to \epsilon
+        \end{align*}
+        ein ANW, dass wir \emph{ANW zu $(\M, \perp)$} nennen, es ist 1-knotig.
+    \end{enumerate}
+\end{example}
+\subsection*{11. Mai 2020}
+%\todo[inline]{replace $\otimes$ by $\ostar$ for monoid operation for this whole lecture^^}
+Seien $m,n \in \N_+$.
+Wiederhole die Monoid Definition.
+\begin{definition}[Monoid]
+    Ein \emph{Monoid} ist ein Tripel $\M = (M, \ostar, \epsilon)$ bestehend aus
+    \begin{itemize}
+        \item Menge $M$
+        \item zwei-stellige Operation $\ostar \colon M \times M \to M$ mit $(x,y) \mapsto x \ostar y$
+        \item einen Element $\epsilon \in M$,
+    \end{itemize}
+    sodass folgende zwei Axiome gelten
+    \begin{enumerate}
+        \item[(M1)] $\forall a,b,c \in M$ $(a \ostar b) \otimes c = a \otimes (b \ostar c)$
+        \item[(M2)] $\forall a \in M$ $\epsilon \ostar a = a = a \ostar \epsilon$.
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    \begin{itemize}
+        \item $\N_{\add} := (\N, +, 0)$
+        \item $\N_{\multi} := (\N, \cdot, 0)$
+        \item $\Z_{\add} := (\Z, +, 0)$
+        \item $\Z_{\multi} := (\N, \cdot, 0)$
+        \item $\R_{\add} := (\R, +, 0)$
+        \item $\R_{\multi} := (\R, \cdot, 0)$
+        \item $(\R_{\ge 0}, +, 0)$
+        \item $(\R_{\ge 0}, \cdot, 0)$
+        \item Definiere $\M\ap P := (\Map P, \ostar, \id_P)$, wobei $\Map P := P^P (= \End(P))$ %\todo[inline]{in Category $\Set$?}
+        und $g \circ f \colon P \to P \mit p \mapsto g(fp)$ für $f,g \in \Map$, wobei $P$ menge ist.
+    \end{itemize}
+\end{example}
+\begin{example}[Wort-Monoid]
+    Sei $A$ eine Menge (``Alphabet''). Sei $\WWord A := (A, \otimes, \epsilon)$ das \emph{Wort-Monoid} mit $\Word A := \brackets{\bigcup_{n \in \N_+ A^n}\cup \set{\epsilon}}$, wobei \begin{align*}
+        \otimes\colon \Word A \times \Word A \to \Word A \mit (a_1, \dots, a_m)\otimes (c_1, \dots, c_n) := (a_1, \dots, a_m, c_1, \dots, c_n) \quad \forall a_1, \dots,a_m; c_1, \dots, c_n \in A 
+    \end{align*}
+und natürlich einem neutralen Element
+    \begin{align*}
+        \epsilon \otimes (a_1, \dots, a_m) := (a_1, \dots, a_m) =: \otimes (a_1, \dots, a_m) \otimes \epsilon \quad \forall a_1, \dots, a_m \in A
+    \end{align*}
+sowie $\epsilon \otimes \epsilon := \epsilon$. Dann ist $\WWord$ ein Monoid, das auch \emph{Wort-Monoid} zu $A$ heißt.
+\end{example}
+\begin{remark}
+    Nun ist aber äquivalent: $\P(\cloverleaf(A,\perp), \underline{\epsilon}) = \G(\WWord A,\perp)$, wobei $\underline{\epsilon} \colon \set{\perp}) \to \set{\epsilon} \mit \perp \to \epsilon$.
+\end{remark}
+\begin{definition}[funktorielle Abbildung]
+    Sei $\G = (G, \ast, \id)$ ANW mit $G = (V,E,\rho)$ und sei $\M = (M \otimes, \epsilon)$ Monoid. Dann heisst eine Abbildung $\Delta\colon E \to M$ \emph{funktoriell} bezüglich $(\G, M)$, falls gilt:
+    \begin{enumerate}
+        \item[(F1)] $\forall (a,b) \in E^{\Gen{2}}$ $\Delta(a \ast b) = \Delta a \ostar \Delta b$
+        \item[(F2)] $\forall p \in V$ $\Delta(\id_p) = \epsilon$.
+    \end{enumerate}
+\end{definition}
+\subsection*{12. Mai 2020}
+Mit diesen neuen Erkenntnis definieren wir uns nun nochmal
+\begin{definition}
+    Sei $\G = (G, \ast, \id)$ ANW mit $G = (V,E,\rho)$ und sei $\M = (M ,\ostar, \epsilon)$ Monoid. Dann heisst eine Abbildung $\Delta \colon E \to M$ \emph{funktoriell} bezüglich $(\G,\M)$, falls gilt:
+    \begin{enumerate}
+        \item[(F1)] $\forall(a,b) \in E^{\Gen{2}}$ $\Delta(a\ast b) = \Delta a \ostar \Delta b$
+        \item[(F2)] $\forall p \in V$ $\Delta(\id p) = \epsilon$
+    \end{enumerate}
+\end{definition}
+Und damit noch die Definition von
+\begin{definition}
+    Ein \emph{Measurement Setup} ist Tripel $\Measure = (\G, \M, \Delta)$ mit ANW $\G = (G, \ast, \id)$ mit $G = (V,E,\rho)$ und Monoid $\M = (M, \ostar, \epsilon)$ sowie einer bezüglich $(\G,\M)$ funktorieller Abbildung $\Delta\colon E \to M$.
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+        \item Sei $P$ eine Menge und betrachte ein Monoid $\M = (M, +, \vec{0})$, welches eine Gruppe bildet (d.h. zu jedem $x \in M$ existiert genau Element $y \in M$ mit $x+y = \vec{0} = y + x$; setze $-x := y$, also gilt stets $x + (-x) = \vec{0} = (-x)+x$). Sei ferner $\vect\colon P\times P \to M$ Abbildung mit
+        \begin{itemize}
+            \item $\vect(p,q) = \vect(p,t) + \vect(t,q)$ für alle $p,t,q \in P$
+            \item $\vect(p,p) \equiv \vec{0}$
+        \end{itemize}
+        Dann ist $\Measure = (\G_P, \M, \vect)$ Measurement Setup
+    \end{enumerate}
+\end{example}
+\begin{problem}
+    Sei $P$ Menge und $\M = (M, +, \vec{0})$ Monoid, welches eine Gruppe bildet und sei $\alpha \colon P \to M$ Abbildung.\\
+    Behauptung: $\Measure = (\G_p, \M, \vect)$ mit 
+    \begin{align*}
+        \vect \colon P^2 \to M \mit (p,q) \mapsto (-\alpha p) + (\alpha q)
+    \end{align*}
+    ist Measurement Setup. (Erinnere: $\G_P := (G_p, \ast, \id)$ und $G_p := (P, P\times P, \id_{P\times P})$)
+    \begin{proof}
+        Es muss gezeigt werden, dass $\alpha$ eine funktorielle Abbildung ist. Wobei wir hier im Setting, die ganze Sache schon vereinfacht haben ... (das gilt nur wenn das WAS, das logistische ANW ist! Dann können einfach die Eigenschaften des Weglass-Produkt $\ast$ gezeigt werden, sonst eben (F1) und (F2)). \todo[inline]{type solution ``WhatsApp Image 2020-05-12 at 2.23.00 PM''}
+    \end{proof}
+\end{problem}
+\begin{problem}
+    Sei $\G = (G,\ast, \id)$ ANW mit $G = (E, E, \rho)$, welches einen \emph{initialen Knoten} $\O \in V$ besitzt, also $\forall p \in V \exists! e \in E \rho e = (\O,p)$, setze $e_{\sigma,p} := e$ für $e \in E$ mit $\rho e := (\O, p)$. Sei ferner $\alpha\colon V \to M$.
+    Behauptung: Dann ist $\Measure= (\G,\M,\Delta)$ mit $\Delta\colon E \to M$ wobei $e \mapsto (-\alpha e_{\O,\sigma e}) + (\alpha e_{\O,\tau e})$ ein Measurement Setup.
+    \begin{proof}
+        Dieser Fall ist allgemeiner, aber es muss nach wie vor einfach (F1) und (F2) gezeigt werden. 
+    \end{proof}
+    \todo[inline]{Ist bis zum 18. Mai 2020}
+\end{problem}
+\todo[inline]{add the tikz diagram!}
+\subsection*{18. Mai 2020}

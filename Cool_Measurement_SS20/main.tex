@@ -2,59 +2,35 @@
 
 \input{header} % hier steckt alles drin
 
-\title{Algebrausche Strukturen: Cool Measurement SS2020}
+\title{Algebraic Measure Theory SS2020}
 \author{Prof. Stefan Schmidt}
 \date{\today}
 
 \begin{document}
-	
-	\maketitle
-	
-	\section{Introduction/Motivation}
-	Was ist Measurement überhaupt?\\
-	Es geht darum mathematisch zu beschreiben
-	\begin{itemize}
-		\item \emph{Was} wir messen?
-		\item \emph{Worin} wir messen?
-		\item \emph{Wie} wir messen?
-	\end{itemize}
-	
-	\begin{example}
-		Wir wählen drei Städte Q-Town, T-Town und P-Town (Also eine Menge mit drei Punkten im $\R^2$, die irgendwie erreichbar sind, bzw. die irgendwie verteilt im $\R^2$ sind. Die Frage ist nun wie wir die Entfernung zwischen den drei Städten messen könnten?
-	\end{example}
-	\begin{example}
-		Nochmal genauer:
-		\begin{itemize}
-			\item Vektor(P-Town,T-Town) = (100 km East, 300km, North)
-			\item Vektor(T-Town,Q-Town) = (200 km West, 100km, South)
-			\item Vektor(T-Town,P-Town) = (100 km West, 200km, North)
-			\item Vektor(T-Town,P-Town) = (100 km West, 300km, South)
-		\end{itemize}
-		\emph{Was} messen wir? Natürlich müssen wir die \emph{Städte-Paare} messen.\\
-		\emph{Worin} messen wir? "Quantifizierte Paare von Himmelsrichtungen" (East-West, North-South)
-	\end{example}
-	
-	\begin{definition}
-		Das Logistische Action Network auf Menge $P$ ist gegeben durch
-		\begin{itemize}
-			\item $G_P := (G_p, \ast, \id) \mit$
-			\item $G_p := (P, P\times P, \id_{P\times P}\und$
-			\item einem Produkt, nennen wir "Weglassprodukt", es ist definiert durch
-			\begin{align*}
-			(p,t)\ast (t,q) := (p,q) \quad \forall p,t,q \in P\\
-			\text{sowie } \id \colon P \to P \times P \mit p \mapsto (p,p).
-			\end{align*}
-		\end{itemize}
-	\end{definition}
-\begin{align*}
-	(p,t)\ast (t,q) = (p,q)
-		\begin{tikzcd}[ampersand replacement=\&]
-			q                                             \& t \arrow[l, "{(t,q)}"'] \\
-			p \arrow[u, "{(p,q)}"] \arrow[ru, "{(p,t)}"'] \&      
-		\end{tikzcd}
-\end{align*}
-	
-	
-	\section{Jetzt geht es los!}
-	
+
+\maketitle
+\setlength\parindent{0pt}
+% preface
+\section*{Vorwort}
+\input{preface}
+\section*{Geplanter Inhalt}
+\begin{itemize}
+    \item What is Algebraic Measurement Theory all about?
+    \item Modeling Algebraic Measurement Formally via the Concept of Measurement Setup
+    \item Morphisms between Measurement Setups
+    \item Connection to Affine Geometry
+    \item Concept of Directed Distance, Proximity, and Fuzzy Order
+    \item Construction of Directed Metrics via Functorial Maps
+    \item Algebraic logical Measurement via T-Norms and Residuated Lattices
+    \item Applications to Formal Concept Analysis and Pattern Structures
+\end{itemize}
+% April
+\input{04_april}
+% May
+\input{05_may}
+% June
+\input{06_june}
+% July
+\input{07_july}
+
 \end{document}

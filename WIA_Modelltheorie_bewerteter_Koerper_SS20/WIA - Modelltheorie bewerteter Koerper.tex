@@ -1,0 +1,134 @@
+\documentclass[ngerman,a4paper,order=firstname]{mathscript}
+\usepackage{mathoperators}
+
+\usepackage{xcolor}
+\usepackage{todonotes}						% put todonotes but with online, otherwise latex gets broken :/
+% % % local commands
+\DeclareMathOperator{\Ad}{Ad}				% Adjoint
+\DeclareMathOperator{\PSL}{PSL} 			% projective linear group 
+\newcommand{\with}{\text{ with }}
+\newcommand{\nd}{\text{ and }}
+\renewcommand{\rhd}{\triangleright}
+\renewcommand{\lhd}{\triangleleft} 			% normal subgroups
+\DeclareMathOperator{\Set}{Set}				% Category of sets
+\DeclareMathOperator{\Vect}{Vect}			% Category of vector spaces
+\DeclareMathOperator{\Grp}{Grp}				% Category of groups
+\DeclareMathOperator{\Mod}{Mod}				% Cat of moduls
+\DeclareMathOperator{\Ann}{Ann}				% annihilator
+\newcommand{\Circlearrowleft}{\rotatebox{180}{$\circlearrowright$}}
+\DeclareMathOperator{\Cl}{Cl}				% conjugation class of something.
+\DeclareMathOperator{\Iso}{Iso}
+
+% % % % Model theory
+\newcommand{\LL}{\mathcal L}
+\newcommand{\RR}{\mathcal R}
+\newcommand{\FF}{\mathcal F}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\M}{\mathbb M} 						% class of \LL structures
+\newcommand{\NN}{\mathcal N}
+\newcommand{\CC}{\mathcal C}
+\newcommand{\arity}{\lambda}
+\newcommand{\discup}{\overset{+}{\cup}}			% disjoint union
+%\newcommand{\satisfy}{\vDash}					% M \satisfy \phi(a)
+\newcommand{\satisfy}{\models}					% M \satisfy \phi(a)
+\newcommand{\lsatisfy}{\mathbin{\rotatebox[origin=c]{180}{$\models$}}}					% \phi(a) \satisfy M
+\DeclareMathOperator{\Diag}{Diag}				% atomic diagrams
+\newcommand{\elem}{\prec}						% expansion is elementary
+
+% % % % better \le and \ge
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\iff}{\Longleftrightarrow}
+
+\DeclareMathOperator{\group}{group}
+\DeclareMathOperator{\ring}{ring}
+\DeclareMathOperator{\el}{el}
+\DeclareMathOperator{\theory}{Th}
+
+% % % % color note stuff
+\newcommand{\marganote}[1]{\textcolor{gray}{#1}}
+\newcommand{\fehmnote}[1]{\textcolor{red}{#1}}
+\newcommand{\pascalnote}[1]{\textcolor{blue}{#1}}
+
+% % % % % % % mark stuff
+\newcommand{\ital}[1]{\textit{#1}}
+
+% get this stupid arrows:
+%\usepackage{mathabx,graphicx}  % ---> add to mathoperators
+%\def\Circlearrowleft{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowleft$}}}
+%\def\Circlearrowright{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowright$}}}
+%\def\CircleArrowleft{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowleft$}}}}
+%\def\CircleArrowright{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowright$}}}}
+%\begin{document}
+%	\Huge
+%	$\circlearrowleft \circlearrowright $
+%	
+%	$\Circlearrowleft \Circlearrowright $
+%	
+%	$\CircleArrowleft \CircleArrowright $
+
+% % % local packages
+%\usepackage{braids}
+
+\newlist{remarkenum}{enumerate}{1}
+\setlist[remarkenum]{label=(\alph*),ref=\theremark~(\alph*)}
+\crefalias{remarkenumi}{remark}
+
+\newlist{propenum}{enumerate}{1}
+\setlist[propenum]{label=(\alph*),ref=\theproposition~(\alph*)}
+\crefalias{propenumi}{proposition}
+
+\newlist{expenum}{enumerate}{1}
+\setlist[expenum]{label=(\alph*),ref=\theexample~(\alph*)}
+\crefalias{expenumi}{example}
+
+\newlist{lemmaenum}{enumerate}{1}
+\setlist[lemmaenum]{label=(\alph*),ref=\thelemma~(\alph*)}
+\crefalias{lemmaenumi}{lemma}
+
+\newlist{defenum}{enumerate}{1}
+\setlist[defenum]{label=(\roman*),ref=\thedefinition~(\roman*)}
+\crefalias{defenumi}{definition}
+
+\title{\textbf{WIA - Modelltheorie Bewerteter Körper}}
+\author{Dozent: Prof. Dr. \person{Arno Fehm}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+\chapter{Grundlagen}
+\input{./TeX_files/chap1}
+\input{./TeX_files/chap2}
+\input{./TeX_files/exer_basics}
+\chapter{Anwendung auf Bewertete Körper}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+\nocite{*}
+%\bibliography{literatur}
+\bibliographystyle{acm}
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}

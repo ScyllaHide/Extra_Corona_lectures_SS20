@@ -1,0 +1,265 @@
+\section{Modelltheorie}
+\subsection{Spache und Strukturen}
+Literatur
+\begin{definition}[Sprache]
+	Eine \begriff{Sprache} $\LL$ ist Quadrupel $\LL = (\FF,\RR, \CC, \arity)$, wobei $\FF,\RR, \CC$ Mengen sind und $\arity \colon \FF \cup \RR \to \N$.
+	\begin{itemize}
+		\item Elemente von $\FF,\RR,\CC$ nennen wir Funktionssymbole, Relationssymbole und Konstantensymbole (auch -zeichen)
+		\item $\arity(f)$ bzw. $\arity(R)$ gibt die \begriff{Stelligkeit} von $f$ bzw. $R$ an
+		\item Kardinalität  von $\LL$ ist $\abs{\LL} := \abs{\FF \cup \RR \cup \CC}$
+	\end{itemize}
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item \emph{Sprache der Gruppen} ist $\LL_{\group} = \set{\ast, \cdot^{-1}}$, wobei $\ast$ ist zweistellig und $\cdot^{-1}$ is einstelliges Funktionssymbol.
+		\item \emph{Sprache der Ringe} ist $\LL_{\ring} = \set{+, \cdot, 0, 1}$, dabei sind $+$ und $\cdot$ zweistellig Funktionssymbole und 0,1 Konstantensymbole.
+	\end{itemize}
+\end{example}
+\begin{definition}[$\LL$-Struktur]
+	\proplbl{def_1_2_3}
+	Sei $\LL = (\FF,\RR, \CC, \arity)$ eine \emph{Sprache}. Eine \begriff{$\LL$-Struktur} ist ein Tupel
+	\begin{align*}
+		\MM = (M, (f^{\MM})_{f \in \FF}, (R^{\MM})_{R \in \RR}, (c^{\MM})_{c \in \CC}),
+	\end{align*}
+	wobei
+	\begin{itemize}
+		\item $M$ \emph{nichtleere} Menge
+		\item $f^{\MM}\colon M^{\arity(f)} \to M$
+		\item $R^{\MM} \subseteq M^{\arity(R)}$
+		\item $c^{\MM} \in M$
+	\end{itemize}
+	die \emph{Interpretation} der entsprechenden Symbole sind.
+	\item \emph{Kardinalität} von $\MM$ ist $\abs{\MM} = \abs{M}$
+\end{definition}
+\begin{*remark}
+	\marganote{Wir werden lieber $R^{\MM}(a)$ für $\ul{a} \in R^{\MM}$ schreiben. ($\ul{a} \in M^{\arity(R)}$) Hierbei ist $\ul{a} = (a_1, \dots, a_n)$!}
+\end{*remark}
+\begin{example}
+	Jeder Ring ist auf natürliche Weise eine $\LL_{\ring}$-Struktur.
+\end{example}
+\begin{definition}[Unterstruktur]
+	Sei $\MM$ eine $\LL$-Struktur. Eine $\LL$-Struktur $\NN$ ist eine \begriff{Unterstruktur} von $\MM$ (in Zeichen $\NN \le \MM$), wenn
+	\begin{itemize}
+		\item $N \subseteq M$
+		\item $f^{\NN} = f^{\MM}_{\mid N^{\arity(f)}}$ $\qquad$\marganote{(insbesondere: $f^{\MM}(N^{\arity(f)} \subseteq N)$)}
+		\item $R^{\NN} = R^{\MM} \cap N^{\arity(R)}$
+		\item $c^{\NN} = c^{\MM}$
+	\end{itemize}
+für alle Symbole in $\LL$. Dabei nennt man $\MM$ eine \begriff{Erweiterung} von $\NN$.
+\end{definition}
+\paragraph{Substructures}[Zoe Chatzidakis]
+$N \subseteq M$ gehört zu einer Unterstruktur von $\MM$ genau dann wenn
+\begin{itemize}
+	\item $N$ erhält alle (Interpretationen von) Konstantensymbolen von $\LL$
+	\item $N$ ist abgeschlossen unter Anwendung von (Interpretation  von) von Funktionen von $\LL$.
+\end{itemize}
+Falls $\LL$ keine Konstantensymbole hat, so ist $\emptyset$ eine Unterstruktur!
+\begin{*remark}[Fehm]
+	Beachte dabei das Leere Mengen nach \propref{def_1_2_3} keine Unterstruktur sein kann.\\ Betrachten wir konkrete Auswirkungen von Weglassen von Symbolen. Beim Weglassen des neutralen Elements in der Sprache der Gruppen passiert z.B. nichts, weil sowohl neutrales Element als auch Inversion aus der Multiplikation definierbar sind und wir die leere menge nicht zulassen.\\
+	Lassen wir die Inversion weg, so müssen Unterstrukturen nicht mehr abgeschlossen unter Inversion sein, sind also nicht notwendigerweise Untergruppen (sondern nur Untermonoide).
+	Es gab dazu auch auch einen coolen Artikel, eventuell hier als Literatur einbinden? 
+\end{*remark}
+\begin{definition}[$\LL$-Morphismus]
+	Seien $\NN, \MM$ $\LL$-Strukturen. Eine Abbildung
+	\begin{align*}
+		\xi \colon M \to N
+	\end{align*}
+	ist \begriff{$\LL$-Morphismus}, wenn 
+	\begin{itemize}
+		\item $\xi(f^{\MM}(\ul{a})) = f^{\NN}(\xi(\ul{a}))$ für $\ul{a} \in M^{\arity(f)}$
+		\item $R^{\N}(\ul{a}) \implies R^{\NN}(\xi(\ul{a}))$ für $\ul{a} \in M^{\arity(f)}$   $\marganote{R^{\NN}\subseteq \xi(R^{\NN})}$
+		\item $\xi(C^{\MM}) = c^{\MM}$
+	\end{itemize}
+	für alle Symbole $f \in \FF, R \in \RR, c \in \CC$. \fehmnote{(Hier schreiben wir $\xi(f(a_1, \dots, a_n))$ für $(\xi(a_1),\dots, \xi(a_n)$)}. $\xi$ ist eine \begriff{$\LL$}-Einbettung, wenn $\xi$ zusätzlich injektiv ist und 
+	\begin{align*}
+		R^{\MM}(\ul{a}) \iff R^{\NN}(\xi(\ul{a})) \quad \forall \ul{a}\in M^{\arity(R)}\quad \marganote{R^{\MM} = \xi(R^{\NN})}
+	\end{align*}
+	Ein \begriff{$\LL$-Isomorphismus} ein bijektiver $\LL$-Morphismus, dessen Umkehrabbildung wieder ein $\LL$-Morphismus ist. Wir schreiben $\MM \cong \NN$, wenn es einen $\LL$-Isomorphismus $\MM \to \NN$ gibt.
+\end{definition}
+\begin{remark}
+	Genau dann ist $\MM \le \NN$, wenn $M \hookrightarrow N$ eine $\LL$-Einbettung ist.
+\end{remark}
+\begin{definition}[Erweiterung]
+	Seien $\LL$ und $\LL'$ Sprachen. Wir nennen $\LL'$ eine Erweiterung, wenn
+	\begin{align*}
+		\FF \subseteq \FF', \R \subseteq \RR', \CC \subseteq \CC' \nd \arity'_{\mid \FF \cup \RR} = \arity
+	\end{align*}
+	Sei $\MM'$ eine $\LL'$-Struktur. Das \begriff{$\LL$-Redukt} von $\MM'$ ist
+	\begin{align*}
+		\MM'_{\mid \LL} := (M', (f^{\MM})_{f \in \FF}, (R^{\MM})_{R \in \RR},(c^{\MM})_{c \in \CC})
+	\end{align*}
+\end{definition}
+\begin{example}
+	Sei $\MM$ $\LL$-Struktur. Für $C \subseteq M$ bezeichne $\LL(C) = (\FF,\RR, \CC \cup C,\arity)$ die Erweiterung von $\LL$ um Konstantensymbole aus $C$. Die $\LL$-Struktur $\MM$ ist dann auf natürliche Weise eine $\LL(C)$-Struktur.
+\end{example}
+\begin{example}
+	Sind $(\MM_i)_{i \in I}$ $\LL$-Strukturen, so wir das kartesische Produkt $\MM := \prod_{i \in I}M_i$ zu einer $\LL$-Struktur durch
+	\begin{itemize}
+		\item $f^{\MM}((\ul{a}_i)_{i \in I}) = (f^{\MM_i}(\ul{a}_i))_{i \in I}$
+		\item $R^{\MM}\prod_{i \in I} R^{\MM_i}$
+		\item $c^{\MM} = (c^{\MM_i})_{i \in I}$
+	\end{itemize}
+\end{example}
+\begin{definition}[mehrsortig]
+	Enthält eine Sprache $\LL$ einstellige Relationssymbole $S_1, \dots, S_n$, so nennen wir eine $\LL$-Struktur $\MM$ \begriff{mehrsortig}, wenn
+	\begin{align*}
+		M = S_1^{\MM} \discup \dots \discup S_n^{\MM}
+		\intertext{und schreibe dies dann auch als}
+		\MM = (S_1^{\MM}, \dots, S_n^{\MM}, \dots)
+	\end{align*}
+	Per Konvention betrachtet man in mehrsortigen Strukturen die Symbole immer als bestimmte Sorten zugehörig, schreibt man etwa
+	\begin{align*}
+		f^{\MM}\colon S_1^{\MM} \to S_2^{\MM}
+	\end{align*}
+	und ignoriert die andere Sorten.
+\end{definition}
+\begin{example}
+	Die mehrsortigen Strukturen einer Sprache $\LL = (S_1, S_2, S_3)$, wobei ``$\epsilon \subseteq S_1 \times S_2$'' können als Mengen $S_1$ mit einer Familie $S_2$ von Teilmengen von $S_1$ aufgebaut werden.
+\end{example}
+\subsection{Formel und Theorien}
+So nun werden wir noch etwas höher bauen ...
+\begin{definition}[$\LL$-Term, Interpretation]
+	Ein \begriff{$\LL$-Term} ist eine Zeichenkette der Form $x_i$ (eine Variable), $c$ (ein Konstantensymbol) oder $f(t_1, \dots, t_{\arity(f)})$, wobei $f$ ein Funktionssymbol und $t_1, \dots, t_{\arity(f)}$ Terme. Die \begriff{Interpretation} eine $\LL$-Terms $t = t(x_1,\dots, x_n)$ in Variablen $x_1, \dots, x_n$ in einer $\LL$-Struktur $\MM$ ist die entsprechende Abbildung $t^{\MM}\colon M^n \to M$.
+\end{definition}
+\begin{example}
+	Der $\LL_{\ring}$-Term $+(\cdot(x_1,x_2),1)$, den wir auch wie üblich auch als $x_1 \cdot x_1 + 1$ oder $x_1^2 + 1$ schreiben, wird in jedem Ring als Abbildung
+	\begin{align*}
+		\begin{cases}
+			R &\to R\\
+			x &\mapsto x_1^2+1
+		\end{cases}
+	\end{align*}
+	interpretiert.
+\end{example}
+\begin{definition}
+	Mal eine Reihe von Definitionen:
+	\begin{itemize}
+		\item \begriff{$\LL$-Formel} ist eine (nach den üblichen Regeln) wohlgeformte Zeichenkette über das Alphabet $\FF\cup \RR\cup \CC \cup \set{\forall, \exists, \wedge,\vee, \neg, =, ),(}$
+		\item \begriff{atomare Formel} ist von der Form $t_1 = t_2$ oder $R(t_1,\dots, t_{\arity(R)})$ mit $R\in \RR$ und Termen $t_1 \dots, t_{\arity(R)}$.
+		\item Formel $\phi$ ist \begriff{quantorenfrei}, wenn \ital{keine} $\forall, \exists$ in $\phi$.
+		\item Formel $\phi$ ist \begriff{essentiell}, wenn sie die Form $\exists x_1, \dots, \exists x_n \psi$, wobei $\psi$ \ital{quantorenfrei} ist
+		\item Variable $x$ ist \begriff{frei} in $\phi$, wenn $x$ nicht im Geltungsbereich eines Quantors liegt.
+		\item Eine Formel $\phi$ ist eine \begriff{Aussage}, wenn keine Variable in $\phi$ \ital{frei} vorkommt.
+		\item Interpretation einer $\LL$-Formel $\phi(x_1, \dots, x_n)$ in einer $\LL$-Struktur $M$ ist die entsprechende Relation $\phi^{\MM} \subseteq M^n$ bestehend aus $\ul{a} \in M^n$, auf die $\phi$ zutrifft (in Zeichen $\MM \satisfy \phi(\ul{a})$). Ist $n = 0$, so sagen wir $\phi$ gilt in $\MM$ (in Zeichen $\MM \satisfy \phi$) oder nicht.
+	\end{itemize}
+\end{definition}
+\begin{*remark}
+	\fehmnote{Wir schreiben $\phi(x_1, \dots, x_n)$ um anzuzeigen, dass $x_1, \dots, x_n$ in $\phi$ frei sind.}
+	\pascalnote{Die $x_i$, bzw $\ul{x}$ in $\phi(x_1, \dots, x_n) = \phi(\ul{x})$ ist nur Platzhalter!}
+\end{*remark}
+\begin{example}
+	Die $\LL_{\ring}$-Aussage $\forall x \forall y (xy=yx)$ gilt in einem Ring genau dann, wenn er kommutativ ist. Die Formel $\exists y (y^2 =x)$ trifft in einem Ring genau auf die Quadrate zu.
+\end{example}
+\begin{example}
+	Sei $\MM$ eine $\LL$-Struktur.
+	\begin{itemize}
+		\item \begriff{atomare Diagramme} $\Diag(\MM)$ sind die Menge der \ital{quantorfreien} $\LL(M)$-Aussagen, die in $\MM$ gelten.
+		\item \begriff{elementare Diagramme} $\Diag_{\el}(\MM)$
+	\end{itemize}
+\end{example}
+\begin{*remark}
+	\begin{itemize}
+		\item \marganote{In der Literatur steht \ital{atomares Diagramm} $\Diag(\MM)$ wäre die Menge der Negationen von atomaren Aussagen und Negationen von atomaren Aussagen, die in $\MM$ gelten.}
+		\item \fehmnote{Im Sinne von \propref{def_2_2_8} implizieren sich diese beiden Theorien gegenseitig (jede der beiden Theorien impliziert jede Aussage der anderen). Es macht praktisch keinen Unterschied, wie man es definiert.}
+	\end{itemize}
+\end{*remark}
+\begin{remark}
+	Wir benutzen die üblichen Abkürzungen, etwa $\phi \implies \psi$ für $\phi \vee \psi$ und $(\phi \to \psi) \wedge (\psi \to \phi)$.
+\end{remark}
+\begin{definition}
+	Und noch mehr Definitionen:
+	\begin{itemize}
+		\item \begriff{$\LL$-Theorie} ist eine Menge von $\LL$-Aussagen
+		\item Eine $\LL$-Struktur $\MM$ ist eine \begriff{Modell} der $\LL$-Theorie $T$ (in Zeichen $\MM \satisfy T$), wenn $\MM \satisfy \phi$ für alle $\phi \in T$. Die Theorie einer $\LL$-Struktur ist
+		\begin{align*}
+			\theory(\MM) &= \set{\phi \colon \MM \satisfy \phi}.
+			\intertext{Die Theorie einer Klasse $\M$ von $\LL$-Strukturen ist}
+			\theory(\M) &= \bigcap_{\MM \in \M} \theory(\MM). 
+		\end{align*}
+		\item Zwei $\LL$-Strukturen $\MM,\NN$ heißen \begriff{elementar äquivalent}, in Zeichen $\MM = \NN$, wenn $\theory(\MM) = \theory(\NN)$.
+		\item $\LL$-Theorie $T$ heißt \begriff{konsistent} \marganote{(auch \ital{erfüllbar})}, wenn sie ein Modell hat.
+	\end{itemize}
+\end{definition}
+\begin{definition}\proplbl{def_2_2_8}
+	\begin{itemize}
+		\item $\LL$-Theorie $T$ \begriff{impliziert} eine Aussage $\phi$ (in Zeichen $T \satisfy \phi$), wenn $\MM \satisfy T \implies \MM \satisfy \phi$.
+		\item Theorie $T$ ist \begriff{vollständig}, wenn $T \satisfy \phi$ oder $T \satisfy \neg \phi$ für jede Aussage $\phi$.
+	\end{itemize}
+\end{definition}
+\todo[inline]{Add literatur remark here! Marker theorem 1.1.10 and add reference 3.2 here!}
+\begin{remark}
+	Ist $\MM \cong \NN$, so ist $\MM \equiv \NN$ (Marker Theorem 1.1.10), und für endliche Strukturen (und nur für diese, siehe chap 3.2) gilt auch die Umkehrung. Eine Theorie ist genau dann vollständig, wenn
+	\begin{align*}
+		\MM, \NN \satisfy T \implies \MM = \NN
+	\end{align*}
+	gilt. \marganote{(für alle $\MM,\NN$)}
+\end{remark}
+\begin{remark}\proplbl{rem_2_2_10}
+	Seien $\MM \le \NN$ $\LL$-Strukturen. Ist $\phi$ eine \ital{quantorenfreie Aussage}, so gilt
+	\begin{align*}
+		\MM \satisfy \phi \iff \NN \satisfy \phi
+	\end{align*}
+	Ist allgemeiner $\phi$ eine \ital{quantorfreie Formel}, so gilt
+	\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a}) \quad \text{ für alle }\ul{a} \in M^n
+	\end{align*}
+	Ist $\phi$ eine \ital{existielle Formel}, so gilt immerhin noch
+	\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \implies \NN \satisfy \phi(\ul{a}) \quad \text{ für alle }\ul{a} \in M^n
+	\end{align*}
+\end{remark}
+\todo[inline]{How to proof this? Or is it obvious?}
+\begin{proof}[\propref{rem_2_2_10}]
+	$\dots$
+\end{proof}
+\begin{definition}
+	\begin{itemize}
+		\item Erweiterung $\MM \le \NN$ ist \begriff{elementar} (in Zeichen $\MM \elem \NN$), wenn für \ital{jede} $\LL$-Formel $\phi(x)$ und jedes $\ul{a} \in M^n$ gilt:
+		\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a})
+		\end{align*}
+		\item Abbildung $\xi \colon \MM \to \NN$ ist \begriff{elementar}, wenn sie seine Einbettung ist und $\xi(\MM) \elem \NN$
+		\item Erweiterung $\MM \le \NN$ heißt \begriff{existentiell} (bzw. $\MM$ heißt \begriff{existentiell abgeschlossen} in $\NN$), in Zeichen $\MM \elem_{\exists} \NN$, wenn für jede \ital{existentielle} $\LL$-Formel $\phi(\ul{x})$ und jedes $\ul{a} \in M^n$ gilt:
+		\begin{align*}
+			\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a}).
+		\end{align*}
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	\proplbl{rem_2_2_12}
+	Es gilt also $\MM\elem \NN \implies \MM \elem_{\exists} \NN \implies \MM \le \NN$ und $\MM \elem \NN \implies \MM \equiv \NN$.
+\end{remark}
+\todo[inline]{This also needs a small proof here, but for me its not clear!}
+\begin{proof}[\propref{rem_2_2_12}]
+	$\dots$
+\end{proof}
+\begin{remark}
+	\proplbl{rem_2_2_13}
+	\marganote{Sei $\NN$ eine $\LL$-Struktur und} sei $\MM$ eine $\LL(N)$-Struktur
+	\begin{enumerate}
+		\item Genau dann, wird durch $c \mapsto c^{\MM}$ eine $\LL$-Einbettung von $\NN$ nach $\MM$ gegeben, wenn $\MM \elem \Diag(\NN)$.
+		\item Genau dann, wird durch $c \mapsto c^{\MM}$ eine elementare Einbettung von $\NN$ nach $\MM$ gegeben, wenn $\MM \satisfy \Diag_{\el}(\NN)$.
+	\end{enumerate}
+\end{remark}
+\begin{proof}[\propref{rem_2_2_13}, Marker, Lemma 2.3.3]
+	\begin{enumerate}
+		\item \begin{itemize}
+			\item[$\Longleftarrow$:] Sei $j \colon N \to M \mit c \mapsto C^{\MM}$. Sind $m_1, m_2$ verschiedene Elemente von $N$, so ist $m_1 \neq m_2 \in \Diag(\NN)$, also da $\MM \satisfy \Diag(\NN)$ folgt $m_1^{\MM} \neq m_2^{\MM}$ also $j(m_1) \neq j(m_2)$, also ist $j$ injektiv.\\
+			\todo[inline]{Still to finish, maybe think about it!}
+		\end{itemize}
+	\item \marganote{Passt schon! Ich denke mit dem folgenden Beispiel ist das intuitiv klar $\dots$}
+	\begin{*example}[Chatzidakis, Example nach 1.11]
+		$\dots$
+	\end{*example}
+	\end{enumerate}
+\end{proof}
+
+\subsection{Kompaktheitssatz}
+
+\subsection{Ultraprodukte}
+
+\subsection{Definierbarkeit und Intepretierbarkeit}
+
+\subsection{Quantorenelimination und Modellvollständigkeit}
+
+\subsection{Modelltheorie von Körpern}

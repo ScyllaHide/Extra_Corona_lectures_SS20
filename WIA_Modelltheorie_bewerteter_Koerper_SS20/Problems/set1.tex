@@ -1,0 +1,45 @@
+\paragraph*{Marker Exercise 1.4.13}
+Wie bekommen ein Problem mit der Charakteristik von $\Z_p$ für $p = 2$ und dem Polynom bzw der Darstellung die gewählt wird für die ganze p-adische Zahl in $\Z_2$. Somit ist \person{Hensel}'s Lemma nicht mehr anwendbar und damit wird $\Z_2$ nicht definiertbar in $\Q_2$. Das kann repariert werden, wenn wir die Darstellung ändern und statt $X^2 \nd a^2$ einfach $X^3 \nd a^3$ setzen. Dann muss wiederrum die Rückrichtung angepasst werden? \todo[inline]{How to finish this?! How can I repair the $\Longleftarrow$?}
+
+\paragraph*{Marker Exercise 2.5.6 (Skolem's Paradox)}
+Aus den Axiomen von ZFC folgt die Aussage "Es gibt ein x, das überabzählbar ist". Es gibt also in so einem abzählbaren Modell M ein x, so dass $M\models$ "$x$ ist überabzählbar". Schon ein wenig seltsam.
+Da ich gleich in die nächste Vorlesung muss, werde ich das kurz selbst auflösen:
+Der Punkt ist einfach, dass überabzählbar=nicht abzählbar über die Nichtexistenz einer Bijektion der Menge mit $\aleph_0$ definiert ist. Im abzählbaren Modell existiert zwar dieses x, aber die Menge, die den Graph einer Bijektion mit $\aleph_0$ beschreiben würde, ist nicht in M. Aus Sicht von M ist die Menge daher nicht abzählbar, auch wenn sie es von "außen" betrachtet vielleicht ist. 
+Gut, gegebenenfalls können wir das nächsten Freitag weiterdiskutieren.
+
+\paragraph*{Marker Exercise 2.5.14 Verbindung zu Corollary 3.5}
+Nicht vollständig ist am einfachsten:
+Also nicht vollständig klar, weil es endliche Modelle hat, und dann Formeln die was über die Anzahl der Elemente sagen manchmal erfüllt sind und manchmal nicht
+AF
+Genau, $Z/2Z \nd (Z/2Z)^2$ sind beides Modelle der Theorie. Elementar äquivalente endliche Strukturen sind isomorph, die beiden sind es aber offensichtlich nicht, somit ist die Theorie nicht vollständig.
+Allen klar? Schön, dann zur Kategorizität. Da kann man sich es relativ einfach machen, wenn man erkennt, welches Gebiet der Algebra hierfür zuständig ist.
+MK
+Abelsche Gruppen, in denen jedes Element Ordnung zwei hat sind immer Z/2Z Vektorräume. Zwei Z/2Z Vektorräume sind isomorph wenn sie dieselbe Dimension haben. und weil Z/2Z endlich ist bedeutet das bei unendlich dimensionalen Vektorräumen, dass die Kardinalität gleich der Dimension ist
+AF
+Und gut, man braucht ein wenig Kardinalzahlarithmetik.
+Genau. Vektorräume über dem Körper mit zwei Elementen, und der Rest ist Lineare Algebra.
+Hm, da wäre ich mir nicht sicher. Vektorraum der Dimension kappa heißt ja eher $\sum_{\alpha<\kappa}Z/2Z$. Also direkte Summe anstatt direktes Produkt.
+Wir haben eine Basis der Kardinalität $\kappa$, und jedes Element ist eine endlich Linearkombination der Basiselemente, sprich eine Summe von endlich vielen Elementen der Basis.
+Man muss sich dann nur noch überlegen, dass es nur $\kappa$ viele solche endlichen Summen gibt. 
+Da jede solche Summe aber höchstens abzählbar viele Elemente der Basis verwendet, bekommt man eine obere Schranke von $\aleph_0*\kappa=\kappa.$
+Nein, das war Quatsch.
+Man überlegt sich, dass es $\kappa^n=\kappa$ viele endliche Folgen  der Länge n von Basiselementen gibt. Über alle n erhält man dann $\aleph_0*\kappa=\kappa$ viele endliche Folgen von Basiselementen. Bei Marker Lemma A.14 und Corollary A.15(i).
+Ist halt die Frage was rauskommt wenn man unendlich viele einsen aufsummiert. 0 oder 1?
+
+Also nach Definition einer Basis eines Vektorraumes ist jedes Element eine endliche Linearkombination der Basiselemente.
+
+Vielleicht denken Sie an so was wie das direkte Produkt $\prod_{i<\omega}Z/2Z$. Aber da ist das naheliegenden System $(\delta_{ij})_i$ eben keine Basis!
+Es gibt dann noch den etwas seltsamen Zusatz "Find $T'\supseteq T$ a complete theory with the same infinite models as T."
+Was machen wir da?
+MK
+noch die Formeln
+$\exists x_1\dots x_n \mit x_1\neq x_2 \nd x_1 \neq x_3 \dots$
+für jedes n dazunehmen, um endliche Modelle auszuschließen
+AF
+Und warum vollständig?
+Margarete Ketelsen
+Wegen dem Korollar
+EJ
+Vaught's Test?
+AF
+Ja genau, $\kappa$-kategorisch für eine (hier sogar jede) unendliche Kardinalzahl und keine endlichen Modelle impliziert vollständig. Aha, so heißt das Korollar 3.5 bei Marker. Schön, damit hätten wir diese Aufgabe.

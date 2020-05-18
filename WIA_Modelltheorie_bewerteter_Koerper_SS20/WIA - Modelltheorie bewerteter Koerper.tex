@@ -2,9 +2,12 @@
 \usepackage{mathoperators}
 
 \usepackage{xcolor}
-\usepackage{todonotes}						% put todonotes but with online, otherwise latex gets broken :/
+%\usepackage[toc,page]{appendix}
+%\usepackage{marginote}
+%\usepackage{easy-todo}
+%\usepackage{todonotes}						% put todonotes but with online, otherwise latex gets broken :/
 % % % local commands
-\DeclareMathOperator{\Ad}{Ad}				% Adjoint
+%\DeclareMathOperator{\Ad}{Ad}				% Adjoint
 \DeclareMathOperator{\PSL}{PSL} 			% projective linear group 
 \newcommand{\with}{\text{ with }}
 \newcommand{\nd}{\text{ and }}
@@ -118,6 +121,12 @@
 \input{./TeX_files/chap2}
 \input{./TeX_files/exer_basics}
 \chapter{Anwendung auf Bewertete Körper}
+
+\begin{appendices}
+	\chapter{Set theory and basics} % now in germ
+		\input{./TeX_files/mengentheorie_basics}
+	\chapter{whatever one could need?}	
+\end{appendices}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
